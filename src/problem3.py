@@ -2,12 +2,12 @@
 Exam 2, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  April 2018.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Bryce Pruemer.  April 2018.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 ###############################################################################
-# TODO: 2.
+# DONE: 2.
 #   In this problem, you will go through the methods of the  Person  class
 #   that is defined below, one by one, in the order that they appear.
 #   For each method:
@@ -26,9 +26,39 @@ def main():
     # Here is some simple code for testing a small part of the  Person  class:
     # -------------------------------------------------------------------------
 
-    # Test get_age:
+    #Test __init__
+    p2 = Person(100)
+    print('Test __init__')
+    print('expected: 100')
+    print('actual:', p2.age)
+    print()
+
+    print('Test get_age:')
     p1 = Person(9)
     print(p1.get_age())  # Should print 9
+    print()
+
+    # Test celebrate_birthday
+    p3 = Person(19)
+    print('Test celebrate_birthday')
+    print('expected: 20 Happy birthday!')
+    print('actual:', p3.celebrate_birthday(), p3.get_age())
+    print()
+
+    # Test celebrate_birthdays
+    p4 = Person(33)
+    print('Test celebrate_birthdays')
+    print('expected: 34 Happy birthday! 35 Happy birthday')
+    print('actual:', p4.celebrate_birthdays(2), p4.get_age())
+    print()
+
+    # Test colder_person
+    p5 = Person(50)
+    print('Test older_person')
+    print('expected: New persons age is 100')
+    newperson = p5.older_person()
+    print('actual:''New persons age is', newperson.get_age())
+    print('other person is', p5.get_age())
 
     # -------------------------------------------------------------------------
     # WRITE MORE CODE HERE AS NEEDED to TEST the code that you write
@@ -44,34 +74,44 @@ class Person(object):
         What comes in:  The Person's age.
         Side effects: Sets instance variables as needed by the other methods.
         """
-        # TODO: Implement and test this method.
+        # DONE: Implement and test this method.
+        self.age = age
 
     def get_age(self):
         """ Returns this Person's age. """
-        # TODO: Implement and test this method.
+        # DONE: Implement and test this method.
+        return self.age
 
     def celebrate_birthday(self):
         """
         Increments this Person's age.
         ALso prints 'Happy birthday!'.
         """
-        # TODO: Implement and test this method.
+        # DONE: Implement and test this method.
+        self.age = self.age + 1
+        print('Happy birthday!')
 
     def celebrate_birthdays(self, n):
         """
         What comes in: A non-negative integer n.
         Side effects:  Calls the  celebrate_birthday  method  n  times.
         """
-        # TODO: Implement and test this method.
+        # DONE: Implement and test this method.
+        for k in range(n):
+            Person.celebrate_birthday(self)
 
     def older_person(self):
         """
         Returns a new Person whose age is twice this Person's age.
         """
-        # TODO: Implement and test this method.
-
+        # DONE: Implement and test this method.
+        newage = self.age * 2
+        newperson = Person(newage)
+        return newperson
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
+
 main()
